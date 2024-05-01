@@ -1,0 +1,36 @@
+pipeline{
+
+      agent any
+
+        environment {
+        // Define environment variables here
+        }
+
+        stages{
+            stage('Checkout'){
+                steps{
+                    script{
+                    // Clone the Git repository's master branch
+                    def gitrepoURL= 'https://github.com/ArunCITest/Jenkins_Upgradev3.git'
+
+                    checkout([$class: 'GitSCM',
+                              branches: [[name: '*/master']],
+                              userRemoteConfigs: [[url: gitrepoURL]],
+                               extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                               ])
+                    }
+                }
+            stage('Build'){
+                steps{
+                    // Build your application here (e.g., compile, package, etc.)
+                    sh '''
+                    ls
+                    echo "In Build Step"
+                    '''
+                }
+            }
+
+
+            }
+        }
+}
