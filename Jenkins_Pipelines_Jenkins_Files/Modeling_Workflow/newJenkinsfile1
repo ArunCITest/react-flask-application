@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    environment{
+    RELEASE="20.0"
+    }
+
+    stages{
+        stage("Build){
+            agent any
+            environment{
+                LEVEL="INFO"
+            }
+            steps{
+                echo "Build release ${RELEASE} and Level ${LEVEL}."
+            }
+        }
+
+        stage("test"){
+            steps{
+                echo "I am in the release ${RELEASE} but not in the log level ${LEVEL}."
+            }
+        }
+    }
+}
