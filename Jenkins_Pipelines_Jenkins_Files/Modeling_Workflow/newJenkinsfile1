@@ -27,10 +27,10 @@ pipeline{
                 parameters{
                     string(name: 'TARGET_ENVIRONMENT', default_value: 'PROD', description: "This is the target environment for deployment")
                 }
-                steps{
+            }
+             steps{
                     echo "This is the release ${RELEASE} to the ${TARGET_ENVIRONMENT} environment"
                 }
-            }
         }
 
     }
