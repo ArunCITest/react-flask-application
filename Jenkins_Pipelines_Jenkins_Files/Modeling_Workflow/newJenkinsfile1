@@ -17,7 +17,7 @@ pipeline{
 
         stage("Test"){
             steps{
-                echo "I am in the release ${RELEASE} but not in the log level ${LEVEL}."
+                echo "I am in the release ${RELEASE}"
             }
         }
         stage("Deploy"){
