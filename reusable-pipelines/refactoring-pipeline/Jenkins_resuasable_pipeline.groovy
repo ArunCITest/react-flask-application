@@ -10,7 +10,7 @@ pipeline{
         stage("Audit Tools"){
             steps{
                 sh '''
-                    git -version
+                    git version
                     java -version
                     mvn -version
                 '''
